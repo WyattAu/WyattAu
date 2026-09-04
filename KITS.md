@@ -16,7 +16,11 @@ Versions below are read from each repo's `Cargo.toml` and verified against vendo
 | `chronoshift` | 0.2.0 | Time abstractions and clock injection (repo: `clock`) | L0 | — | — |
 | `typed-id-new` | 0.1.0 | Strongly-typed identifiers (repo: `typed-id`) | L0 | — | `derive` (typed-id-derive) |
 | `validkit` | 0.1.0 | Composable input validation primitives | L0 | ferro, Tachyon, CivitForge, EvergreenShims | — |
-| `geo-kit` | 0.1.1 | Geocoding / geo utilities (UK postcode, etc.) | L0 | ecom-engine (vendored) | — |
+| `geo-kit` | 0.1.1 | Geocoding / geo utilities (UK postcode incl. GIR 0AA, etc.) | L0 | ecom-engine (vendored) | — |
+| `simd-tokenizer` | 0.1.0 | Token estimation — safe SWAR whitespace scan (5× scalar), optional tiktoken | L0 | — | `tiktoken` |
+| `delta-kit` | 0.1.0 | Rabin-rolling binary-safe delta codec (rsync-style, wire-compatible with suture) | L0 | — | — |
+| `crdts-kit` | 0.1.0 | RGA replicated string — tombstones, causal convergence (proptest-verified), serde (repo: `crdts-kit`) | L0 | — | `serde`, `uuid` off for wasm |
+| `model-router` | 0.1.0 | Cost-aware LLM routing — pricing tables, USD budget tracking, fallback chains (genai companion) | L0 | — | `genai` adapter |
 
 ## L1 — Core primitives
 
@@ -24,13 +28,15 @@ Versions below are read from each repo's `Cargo.toml` and verified against vendo
 |---|---|---|---|---|---|
 | `error-classify` | 0.2.0 | Error trait classification (repo: `app-error`); builds on `error-codes` | L1 | — | — |
 | `tokenkit` | 0.1.1 | Token minting/verification | L1 | ferro, aether-core, accessctl, barbican, ws-barbican, Tachyon, CivitForge, clawdius, crawlkit, suture | — |
-| `oauth-toolkit` | 0.1.0 | OAuth flow helpers | L1 | — | — |
+| `oauth-toolkit` | 0.2.0 | OAuth flow helpers — PKCE, web social login, desktop loopback capture, mail-provider presets (Gmail/Outlook/Yahoo/AOL/Fastmail) | L1 | — | — |
 | `loop-retry` | 0.1.0 | Retry loops with backoff (repo: `retry-backoff`) | L1 | crawlkit, EvergreenShims, ecom-engine (vendored) | — |
 | `shutdown-kit` | 0.2.0 | Graceful shutdown coordination (repo: `graceful`) | L1 | axum-stack | — |
 | `breaker` | 0.3.0 | Circuit breaker | L1 | ferro, aether-core, fetchkit | — |
 | `throttle-kit` | 0.3.0 | Rate limiting / throttling (repo: `ratelimit`) | L1 | ferro | — |
 | `shared-state` | 0.1.0 | Shared/app-state plumbing | L1 | — | — |
 | `eventbus-kit` | 0.2.0 | In-process event bus (repo: `eventbus`) | L1 | — | — |
+| `cas-kit` | 0.1.0 | BLAKE3 content-addressed blob store — packfiles, zstd, verify-on-read (zero-unwrap) | L1 | — | `zstd` (default) |
+| `webauthn-kit` | 0.1.0 | Custom CTAP2/COSE WebAuthn over `ring` — registration/authentication verification, sign-count state machine, challenge/replay store (repo: `webauthn-kit`) | L1 | — | `serde` |
 
 ## L2 — Service infrastructure
 
@@ -42,7 +48,7 @@ Versions below are read from each repo's `Cargo.toml` and verified against vendo
 | `otelkit` | 0.1.0 | OpenTelemetry setup helpers | L2 | EvergreenShims | — |
 | `healthkit` | 0.1.0 | Health/readiness endpoints | L2 | axum-stack, ecom-engine (vendored) | — |
 | `webhookkit` | 0.2.0 | Signed outbound webhooks + HMAC verification | L2 | ecom-engine (vendored) | — |
-| `mailkit` | 0.1.0 | Transactional email sending | L2 | ferro | — |
+| `mailkit` | 0.2.0 | Transactional email sending + JWZ-lite message threading | L2 | ferro | — |
 | `tantivy-helper` | 0.2.0 | Tantivy search index helpers (repo: `tantivy-ext`) | L2 | — | — |
 | `api-paginate` | 0.1.0 | Cursor/offset pagination (repo: `paginate`) | L2 | — | — |
 | `decimal-money` | 0.2.0 | Decimal money type (repo: `money`) | L2 | billing-kit, ecom-engine (vendored) | — |
@@ -59,6 +65,8 @@ Versions below are read from each repo's `Cargo.toml` and verified against vendo
 | `api-types` | 0.1.0 | Shared API request/response types | L2 | — | — |
 | `axum-stack` | 0.1.0 | Opinionated axum router/middleware stack (healthkit + shutdown-kit) | L2 | — | — |
 | `multi-chain-wallet` | 0.1.0 | Multi-chain wallet/HDWallet (repo: `hdwallet`) | L2 | — | — |
+| `actor-kit` | 0.1.0 | Work-stealing actor runtime — OTP supervision trees, crossbeam steal, bounded backpressure; `ResourcePolicy` hook | L2 | — | `serde`, `unsafe-pool` (opt-in arena), `zero-copy` |
+| `docs-pipeline` | 0.1.0 | Markdown → HTML pipeline — pulldown 0.13, tree-sitter 0.25 highlighting (TOML+Markdown restored), TOC, sanitize, MDX | L2 | Tachyon (tachyon-renderer re-export) | per-language `lang-*` features |
 
 ## L3 — Application frameworks
 
